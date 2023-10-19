@@ -3,10 +3,11 @@ package app
 import (
 	"context"
 	"country/pkg/database"
+	"country/pkg/domain"
 	"fmt"
 )
 
-func FindAllCountries() ([]CountryData, error) {
+func FindAllCountries() ([]domain.CountryData, error) {
 	client := database.DbConn()
 	if client == nil {
 		return nil, fmt.Errorf("Failed to connect to MongoDB")
@@ -14,7 +15,7 @@ func FindAllCountries() ([]CountryData, error) {
 
 	defer client.Disconnect(context.Background())
 
-	collection := client.Database("your-database-name").Collection("your-collection-name")
+	collection := client.Database("Country").Collection("project")
 
 	ctx := context.Background()
 	cur, err := collection.Find(ctx, map[string]interface{}{})
@@ -23,9 +24,9 @@ func FindAllCountries() ([]CountryData, error) {
 	}
 	defer cur.Close(ctx)
 
-	var countries []CountryData
+	var countries []domain.CountryData
 	for cur.Next(ctx) {
-		var country CountryData
+		var country domain.CountryData
 		err := cur.Decode(&country)
 		if err != nil {
 			return nil, err
