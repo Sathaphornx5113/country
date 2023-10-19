@@ -2,17 +2,19 @@ package main
 
 import (
 	"context"
+	"country/pkg/database"
 	"fmt"
-
-	"github.com/Sathaphornx5113/country/pkg/database"
 )
 
 func main() {
-	client, err := database.DbConn()
-	if err != nil {
-		fmt.Println("Failed to connect to MongoDB:", err)
+	client := database.DbConn()
+	if client == nil {
+		fmt.Println("Failed to connect to MongoDB")
 		return
 	}
-	defer client.Disconnect(context.Background())
 
+	// Your code to work with 'client' here
+
+	defer client.Disconnect(context.Background())
+	fmt.Println("Connected to MongoDB!")
 }
