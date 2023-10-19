@@ -1,9 +1,10 @@
 package main
 
 import (
-	"/pkg/database/database.go"
 	"context"
 	"fmt"
+
+	"github.com/Sathaphornx5113/country/pkg/database"
 )
 
 func main() {
