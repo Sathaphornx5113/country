@@ -15,7 +15,7 @@ func FindAllCountries() ([]domain.CountryData, error) {
 
 	defer client.Disconnect(context.Background())
 
-	collection := client.Database("Country").Collection("project")
+	collection := client.Database("country_project").Collection("country")
 
 	ctx := context.Background()
 	cur, err := collection.Find(ctx, map[string]interface{}{})

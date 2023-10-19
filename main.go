@@ -24,6 +24,6 @@ func main() {
 	}
 
 	for _, country := range countries {
-		fmt.Printf("Country: %s, Year: %d, Population: %d\n", country.Country, country.Year, country.Population)
+		fmt.Printf("Country: %s, Year: %d, Region: %s, Population: %d\n", country.Country, country.Year, country.Region, country.Population)
 	}
 }
